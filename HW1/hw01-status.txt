@@ -5,7 +5,8 @@ Please fill in answers to the questions below:
 Ans. Nishchay Shah
 
 
-2. Which section of the class are you in (Monday or Tuesday; Grad or Undergrad)?
+2. Which section of the class are you in (Monday or Tuesday; 
+   Grad or Undergrad)?
 Ans. Tuesday, Grad
 
 
@@ -19,11 +20,17 @@ Ans. nishchaycs.com
 
 
 5. What's the URL of your Github repository for this assignment?
-Ans. Public git: https://github.com/nishchaycs/webdev
-	 Git Repo for this assignment: https://github.com/nishchaycs/webdev/tree/master/HW1
-	 Nginx Conf files: https://github.com/nishchaycs/webdev/tree/master/HW1/conf
-	 Main website files: https://github.com/nishchaycs/webdev/tree/master/HW1/www
-	 hw01 subdomain website files: https://github.com/nishchaycs/webdev/tree/master/HW1/hw01
+Ans. 
+Public git: 
+	https://github.com/nishchaycs/webdev	 
+Git Repo for this assignment:
+	https://github.com/nishchaycs/webdev/tree/master/HW1
+Nginx Conf files: 
+	https://github.com/nishchaycs/webdev/tree/master/HW1/conf
+Main website files: 
+	https://github.com/nishchaycs/webdev/tree/master/HW1/www
+hw01 subdomain website files: 
+	https://github.com/nishchaycs/webdev/tree/master/HW1/hw01
 
 
 6. Which parts of this assignment did you have trouble with, if any?
