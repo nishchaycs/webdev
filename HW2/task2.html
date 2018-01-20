@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Task 2</title>
+	<meta charset="UTF-8"> 
+</head>
+<body>
+	<h2 id="num">10</h2>
+	<br />
+	<button id="alb">Alert Button</button>
+	<br />
+	<button id="inb">Increment Button</button>
+	<br />
+	<button id="apb">Append Button</button>
+
+	<script>
+		(function() {
+  			var balb = document.getElementById('alb');
+  			function generateAlert() {
+    			var num = document.getElementById('num');
+    			alert("Alert: " + num.innerText);
+  			}
+			balb.addEventListener("click", generateAlert);
+
+			var binb = document.getElementById('inb');
+  			function incrementVal() {
+    			var num = document.getElementById('num');
+    			var numval = num.innerHTML;
+    			numval++;
+    			num.innerHTML = numval;
+  			}
+			binb.addEventListener("click", incrementVal);
+
+			var bapb = document.getElementById('apb');
+			function addPara() {
+				var num = document.getElementById('num');
+				var newpara = document.createElement("P");
+				newpara.appendChild(document.createTextNode(num.innerText));
+				document.body.appendChild(newpara);			
+			}
+			bapb.addEventListener("click", addPara);
+ 		})();
+	</script>
+
+</body>
+</html>

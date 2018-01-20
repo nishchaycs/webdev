@@ -1,0 +1,41 @@
+
+Web Dev Spring 2018 HW02 Status
+
+Answer the following questions:
+
+1. What's your name?
+A. Nishchay Shah.
+
+
+2. What's the URL of the github repo with your work for this HW?
+
+
+
+
+3. What's the URL that you deployed to?
+
+
+
+4. How many of the tutorial exercises did you really do?
+A. All HTML exercises. 
+   More than half of CSS exercises.
+   All JS DOM Exercises.
+
+5. How comfortable do you feel with HTML and CSS now?
+A. Quite comfortable.
+
+
+6. How comfortable do you feel with JS and the DOM now?
+A. Comfortable, but will need more practice.
+
+
+7. Do all four of your pages pass the W3C HTML validator?
+ (https://validator.w3.org/)
+A. Yes.
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Submission
