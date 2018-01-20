@@ -8,12 +8,12 @@ A. Nishchay Shah.
 
 
 2. What's the URL of the github repo with your work for this HW?
-
+A. https://github.com/nishchaycs/webdev/tree/master/HW2
 
 
 
 3. What's the URL that you deployed to?
-
+A. hw02.nishchaycs.com
 
 
 4. How many of the tutorial exercises did you really do?
