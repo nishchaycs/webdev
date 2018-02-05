@@ -8,4 +8,7 @@ defmodule CalcTest do
   test "test2" do
     assert Calc.eval("3 * 4 - 4 * ( 2 + 1 )") == 0
   end
+  test "test3" do
+    assert Calc.eval("3 / (4 - 1) * (2 + 1)") == 3
+  end
 end

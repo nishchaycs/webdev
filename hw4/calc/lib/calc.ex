@@ -12,14 +12,17 @@ defmodule Calc do
       {:error, reason} ->
         IO.puts "Error: #{reason}"
       line ->
-        IO.puts(Calc.eval(String.trim(line)))
+        IO.puts(Calc.eval(line |> String.trim))
         main()
     end
   end
 
   def eval(expr) do
   	expr
+  	|> String.replace("(", "( ")
+    |> String.replace(")", " )")
   	|> String.split(" ")
+  	|> Enum.filter(fn x -> x != "" && x != " "end)
   	|> calculate
   end
 

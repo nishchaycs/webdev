@@ -7,12 +7,13 @@ Answer the following questions:
 A. Nishchay Shah
 
 
+
 2. What's the URL of the github repo with your calc program?
-A. https://github.com/nishchaycs/webdev/tree/master/hw4/calc
+A. https://github.com/nishchaycs/webdev/tree/master/HW04
 
 
 3. Is your calc program's functionality complete? If not, what's missing?
-A. Calculator needs to have spaces between all tokens, including paranthesis.
+A. Nothing, I hope!
 
 
 4. Did you complete the CodeSchool tutorial?
