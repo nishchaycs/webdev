@@ -5,16 +5,6 @@ defmodule Calc do
   Documentation for Calc.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Calc.hello
-      :world
-
-  """
-
   def main() do
     case IO.gets("> ") do
       :eof ->
@@ -179,5 +169,3 @@ defmodule Calc do
   end
 
 end
-
-Calc.main()
