@@ -41266,7 +41266,6 @@ var Game = function (_React$Component) {
 
     _this.ltolofl = _this.ltolofl.bind(_this);
     _this.reset = _this.reset.bind(_this);
-    _this.checkHit = _this.checkHit.bind(_this);
     _this.createArray = _this.createArray.bind(_this);
 
     _this.state = {
@@ -41282,13 +41281,13 @@ var Game = function (_React$Component) {
   _createClass(Game, [{
     key: 'gotView',
     value: function gotView(msg) {
-      console.log("Got View: ", msg);
+      //console.log("Got View: ", msg);
       this.setState({ tiles: this.ltolofl(msg.game.skel),
         score: msg.game.points,
         flipback: msg.game.flipback,
         matched: msg.game.matched });
       if (this.state.flipback != null) {
-        console.log("inside flipback");
+        //console.log("inside flipback")
         this.channel.push("nomatch", {}).receive("ok", this.gotView.bind(this));
       }
       if (this.state.matched.length === 8) {
@@ -41319,53 +41318,7 @@ var Game = function (_React$Component) {
   }, {
     key: 'tileClick',
     value: function tileClick(row, col) {
-      /*if(this.state.activeTile != null) {
-        this.channel.push("matched", {row: row, col: col})
-                  .receive("ok", this.gotView.bind(this));
-      } else {
-        this.channel.push("guess", {row: row, col: col})
-                  .receive("ok", this.gotView.bind(this));
-      }*/
-
       this.channel.push("guess", { row: row, col: col }).receive("ok", this.gotView.bind(this));
-
-      //if (!this.state.tiles[row][col].flip) {
-      //this.checkHit(this.state.tiles[row][col].letter, row, col);      
-      //}        
-    }
-  }, {
-    key: 'checkHit',
-    value: function checkHit(letter, r, c) {
-      var _this2 = this;
-
-      if (this.state.inactive) {
-        return;
-      }
-      // Attribution: https://github.com/jdlehman/react-memory-game
-      var tiles = this.state.tiles;
-      tiles[r][c].flip = true;
-      this.setState({ tiles: tiles, inactive: true });
-      if (this.state.activeTile) {
-        if (letter === this.state.activeTile.letter) {
-          tiles[r][c].match = true;
-          tiles[this.state.activeTile.r][this.state.activeTile.c].match = true;
-          this.setState({ tiles: tiles, activeTile: null, score: this.state.score + 5, inactive: false, matched: this.state.matched + letter });
-        } else {
-          setTimeout(function () {
-            tiles[r][c].flip = false;
-            tiles[_this2.state.activeTile.r][_this2.state.activeTile.c].flip = false;
-            _this2.setState({ tiles: tiles, activeTile: null, score: _this2.state.score, inactive: false });
-          }, 1000);
-        }
-      } else {
-        this.setState({
-          activeTile: { r: r, c: c, letter: letter },
-          inactive: false
-        });
-      }
-      if (this.state.matched.length === 7 && this.state.activeTile != null) {
-        alert("You win! Score: " + (this.state.score + 5));
-      }
     }
   }, {
     key: 'reset',
@@ -41382,7 +41335,7 @@ var Game = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       return _react2.default.createElement(
         'div',
@@ -41422,7 +41375,7 @@ var Game = function (_React$Component) {
                     return _react2.default.createElement(
                       'td',
                       { align: 'center', onClick: function onClick() {
-                          return _this3.tileClick(rowIndex, colIndex);
+                          return _this2.tileClick(rowIndex, colIndex);
                         } },
                       _react2.default.createElement(Tile, {
                         tile: tile })

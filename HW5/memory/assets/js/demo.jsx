@@ -18,7 +18,6 @@ class Game extends React.Component {
  
     this.ltolofl = this.ltolofl.bind(this);
     this.reset = this.reset.bind(this);  
-    this.checkHit = this.checkHit.bind(this);
     this.createArray = this.createArray.bind(this);
         
     this.state = {
@@ -31,14 +30,14 @@ class Game extends React.Component {
   }
 
   gotView(msg) {
-    console.log("Got View: ", msg);
+    //console.log("Got View: ", msg);
     this.setState(
       {tiles: this.ltolofl(msg.game.skel), 
         score: msg.game.points, 
         flipback: msg.game.flipback,
         matched: msg.game.matched}); 
     if(this.state.flipback != null) {
-      console.log("inside flipback")
+      //console.log("inside flipback")
       this.channel.push("nomatch", {})
                 .receive("ok", this.gotView.bind(this));
     }
@@ -67,51 +66,8 @@ class Game extends React.Component {
   }
 
   tileClick(row, col) {
-    /*if(this.state.activeTile != null) {
-      this.channel.push("matched", {row: row, col: col})
-                .receive("ok", this.gotView.bind(this));
-    } else {
-      this.channel.push("guess", {row: row, col: col})
-                .receive("ok", this.gotView.bind(this));
-    }*/
-    
     this.channel.push("guess", {row: row, col: col})
-                .receive("ok", this.gotView.bind(this));
-    
-    //if (!this.state.tiles[row][col].flip) {
-      //this.checkHit(this.state.tiles[row][col].letter, row, col);      
-    //}        
-  }
-
-  checkHit(letter, r, c) {
-    if (this.state.inactive) {
-      return;
-    }
-    // Attribution: https://github.com/jdlehman/react-memory-game
-    var tiles = this.state.tiles;
-    tiles[r][c].flip = true;
-    this.setState({tiles, inactive: true});
-    if (this.state.activeTile) {
-      if (letter === this.state.activeTile.letter) {
-        tiles[r][c].match = true;
-        tiles[this.state.activeTile.r][this.state.activeTile.c].match = true; 
-        this.setState({tiles, activeTile: null, score: this.state.score + 5, inactive: false, matched: this.state.matched + letter});                
-      } else {
-        setTimeout(() => {
-          tiles[r][c].flip = false;
-          tiles[this.state.activeTile.r][this.state.activeTile.c].flip = false;
-          this.setState({tiles, activeTile: null, score: this.state.score, inactive: false});
-        }, 1000);
-      }
-    } else {
-      this.setState({
-        activeTile: {r, c, letter},
-        inactive: false
-      });
-    }
-    if(this.state.matched.length === 7 && this.state.activeTile!=null) {
-      alert("You win! Score: " + (this.state.score+5));
-    }
+                .receive("ok", this.gotView.bind(this));     
   }
 
   reset() {
