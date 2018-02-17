@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PORT=5101
+export PORT=5100
 
 cd ~/www/memory
 ./bin/memory stop || true
