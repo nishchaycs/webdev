@@ -1,0 +1,39 @@
+
+Web Dev Spring 2018 HW06 Status
+
+Answer the following questions:
+
+
+1. What's your name?
+A. Nishchay Shah.
+
+
+2. What's the URL of the github repo with your work for this HW?
+A. https://github.com/nishchaycs/tasktracker
+
+
+3. What's the version number of your github release?
+A. v1.0
+
+
+4. What's the URL that you deployed to?
+A. tasks1.nishchaycs.com
+
+
+5. Is your app functionality complete? If not, what's missing?
+A. Yes
+
+
+6. Is your app properly deployed? If not, what went wrong?
+A. Yes.
+
+
+7. Do your deployed pages pass the W3C HTML Validator? (https://validator.w3.org/)
+A. Yes.
+
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Development
+ - Deployment
+ - Submission
