@@ -1,0 +1,24 @@
+<h2>Profile</h2>
+
+<h4>Task Id: <%= @task_id %></h4>
+
+<h4>Your Underlings:</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Start Time</th>
+      <th>End Time</th>
+    </tr>
+  </thead>
+  <tbody>
+	<%= Enum.map @tb, fn t -> %>
+	    <tr>
+	      <td><%= t.start_time %></td>
+	      <td><%= t.end_time %></td>
+	      <td class="text-right">
+	        <span><%= link "Delete", to: timetrack_path(@conn, :delete, t.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+	      </td>
+	    </tr>	
+	<% end %>
+  </tbody>
+</table>

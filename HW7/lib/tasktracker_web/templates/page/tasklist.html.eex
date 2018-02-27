@@ -1,0 +1,63 @@
+<%= if @current_user do %>
+
+<h1>Your Tasks</h1>
+
+
+<script>
+  window.timetrack = "<%= timetrack_path(@conn, :create) %>"
+</script>
+
+<p>
+  <div class="float-left">
+    <%= link "Add New Task", to: task_path(@conn, :new) %><br><br>
+  </div>
+  <div class="float-right">
+    <%= link "Edit User Data", to: user_path(@conn, :edit, @current_user) %>
+  </div>
+</p>
+<br><br>
+
+<%= Enum.map @tasks, fn task -> %>
+<div class="row">
+  <div class="col">
+    <%= if @current_user.email === task.user.email or  @current_user.id === task.user.manager_id do %>
+      <div class="card">
+        <div class="card-body">
+          <p>
+            <div class="float-left">
+              <h6 class="card-title"><b>TASK: </b><i><%= task.title %></i><b> FOR: </b><%= task.user.name %></h6>
+            </div>
+            <div class="float-right">
+              Status: <%= if task.done do %> Task Completed! <% else %> Task Incomplete. <% end %>
+            </div>
+          </p>
+          <br><br>
+          <b><p>Description:</p></b>
+          <p><%= task.description %></p>
+          <p>
+            <div class="float-left">
+              <p><%= link "Track Time Spent", to: page_path(@conn, :tasktimeblocks, %{"task_id" => task.id}) %></p> 
+            </div>
+            <div class="float-right">
+              <button class="timetrack-button btn btn-default"
+                      data-task-id="<%= task.id %>"
+                      data-active-id="no">Start Task</button>
+            </div>
+          </p>              
+        </div>
+      </div>
+    <% end %>    
+  </div>
+</div>
+<% end %>
+
+<% else %>
+
+<div class="row">
+  <div class="col">
+    <h3>Please Login Again!</h3>
+    <span><%= link "Login", to: "/" %></span>
+  </div>
+</div>
+
+<% end %>

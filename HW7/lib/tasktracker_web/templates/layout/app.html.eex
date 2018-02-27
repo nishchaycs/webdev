@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Tasktracker!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <%= if @current_user do %>
+          <div class="col-9">
+            <p class="p-4">
+              <nav class="navbar navbar-default bg-faded">
+                <ul class= "nav">
+                <li class="nav-item active"><a class="nav-link" href="/tasklist">Feed</a></li>                
+                <%= if @current_user.manager_bool do %>
+                  <li class="nav-item active"><a class="nav-link" href="/users">Select Team</a></li> 
+                  <li class="nav-item active"><a class="nav-link" href="/tasks">Task Report</a></li>
+                <% end %>
+              </ul>
+              </nav>                            
+            </p>
+          </div>
+          <div class="col-3">
+            <p class="p-4">
+              Logged in as: <%= @current_user.name %> |
+              <%= link "Log Out", to: "/session", method: :delete %>
+            </p>
+          </div>
+        <% else %>
+          <div class="col-3 offset-9">
+            <p>Not logged in.</p>
+          </div>
+        <% end %>
+      </div>
+    	
+    	<%= if get_flash(@conn, :info) do %>
+        	<p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      	<% end %>
+      	<%= if get_flash(@conn, :error) do %>
+      	 	<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+  	  	<% end %>   
+
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

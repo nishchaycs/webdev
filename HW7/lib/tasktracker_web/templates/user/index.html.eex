@@ -1,0 +1,54 @@
+<%= if @current_user do %>
+
+<script>
+ window.user_path = "<%= user_path(@conn, :update_manager) %>";
+ window.manager_id = "<%= @current_user.id %>";
+</script>
+
+<h2>Listing Users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Manager?</th>
+      <th>Select Team</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+  <%= if user.manager_id === nil or user.manager_id === @current_user.id do %> 
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.name %></td>
+      <td><%= user.manager_bool %></td>
+      <td><button class="manage-button btn btn-default"
+              data-user-id="<%= user.id %>"
+              data-user-manager-id="<%= user.manager_id %>"
+              data-manager-id="<%= @current_user.id %>">Manage</button></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New User", to: user_path(@conn, :new) %></span>
+
+
+<% else %>
+
+<div class="row">
+  <div class="col">
+    <h3>Please Login Again!</h3>
+    <span><%= link "Login", to: "/" %></span>
+  </div>
+</div>
+
+<% end %>

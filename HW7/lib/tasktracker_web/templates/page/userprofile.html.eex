@@ -1,0 +1,44 @@
+<%= if @current_user do %>
+
+<h2>Profile</h2>
+
+<h4>Your Manager:
+	<%= if @current_user.manager_id do %>
+		<p><%= @current_user.manager_id %></p>
+	<% else %>
+		<p>No Manager Assigned!</p>
+	<% end %>
+</h4>
+
+<h4>Your Underlings:</h4>
+<%= if @current_user.manager_bool do %>		
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th>Email</th>
+	      <th>Name</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<%= Enum.map @underlings, fn user -> %>
+		    <tr>
+		      <td><%= user.email %></td>
+		      <td><%= user.name %></td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
+<% else %>
+	You are not a Manager!
+<% end %>
+
+<% else %>
+
+<div class="row">
+  <div class="col">
+    <h3>Please Login Again!</h3>
+    <span><%= link "Login", to: "/" %></span>
+  </div>
+</div>
+
+<% end %>
